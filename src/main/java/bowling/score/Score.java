@@ -3,6 +3,11 @@ package bowling.score;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sun.tools.sjavac.Log;
+
 import bowling.frame.Frame;
 import bowling.frame.state.BowlingEnd;
 import bowling.frame.state.State;
@@ -11,6 +16,9 @@ import bowling.frame.state.normalframe.NormalFrameSpare;
 import bowling.frame.state.normalframe.NormalFrameStrike;
 
 public class Score {
+
+	private static final Logger log = LoggerFactory.getLogger(Score.class);
+
 	private final int SPARE = 1;
 	private final int STRIKE = 2;
 
@@ -18,14 +26,14 @@ public class Score {
 
 	public Score(Frame frame) {
 		scores = new ArrayList<>();
-		calculateScore(frame);
+		createScores(frame);
 	}
 
 	public List<Integer> get() {
 		return scores;
 	}
 
-	private void calculateScore(Frame frame) {
+	private void createScores(Frame frame) {
 		Frame nowFrame = frame;
 		while (!isEmpty(nowFrame)) {
 			State state = nowFrame.getState();
@@ -40,15 +48,24 @@ public class Score {
 
 	private void isState(Frame frame, State state) {
 		if (isStrike(state)) {
-			scores.add(calculateStrike(frame));
+			if (calculateStrike(frame) != null) {
+				scores.add(calculateStrike(frame));
+			}
 		} else if (isSpare(state)) {
-			scores.add(calculateSpare(frame));
+			log.debug("{}", state);
+			if (calculateSpare(frame) != null) {
+				scores.add(calculateSpare(frame));
+			}
 
 		} else if (isMiss(state)) {
-			scores.add(calculateMiss(frame));
+			if (calculateMiss(frame) != null) {
+				scores.add(calculateMiss(frame));
+			}
 
 		} else if (isLastFrame(state)) {
-			scores.add(calculateLastFrame(frame));
+			if (calculateLastFrame(frame) != null) {
+				scores.add(calculateLastFrame(frame));
+			}
 		}
 	}
 

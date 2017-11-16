@@ -1,9 +1,15 @@
 package bowling.frame.state.lastframe;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import bowling.frame.state.Running;
 import bowling.frame.state.State;
 
 public class LastFrameFirst extends Running {
+	
+	private static final Logger log = LoggerFactory.getLogger(LastFrameFirst.class);
+
 
 	private int firstScore;
 
@@ -13,6 +19,10 @@ public class LastFrameFirst extends Running {
 
 	@Override
 	public State bowl(int score) {
+		if (firstScore + score > 10) {
+			log.debug(" 쓰러진 핀의 수가 10이 넘을 수 없습니다. ");
+			return this;
+		}
 		if (firstScore + score == 10) {
 			return new LastFrameSpare(firstScore, score);
 		}

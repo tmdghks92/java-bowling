@@ -1,10 +1,15 @@
 package bowling.frame;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import bowling.frame.state.End;
 import bowling.frame.state.State;
 import bowling.frame.state.normalframe.NormalFrameReady;
 
 public class NormalFrame extends Frame {
+
+	private static final Logger log = LoggerFactory.getLogger(NormalFrame.class);
 
 	private State state;
 	private Frame next;
@@ -20,6 +25,10 @@ public class NormalFrame extends Frame {
 
 	@Override
 	public Frame bowl(int score) {
+		if (score > 10 || score < 0) {
+			log.debug(" 0~10 사이의 값을 입력하세요.");
+			return this;
+		}
 		state = this.state.bowl(score);
 		if (state instanceof End) {
 			next = nextFrame();

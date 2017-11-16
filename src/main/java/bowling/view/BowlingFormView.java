@@ -11,7 +11,7 @@ public class BowlingFormView {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static String inputName() {
-		log.debug("플레이어의 이름을 입력하세요. (' ' 또는 ','으로 구분) : ");
+		log.debug("플레이어의 이름을 입력하세요. : ");
 		return scanner.nextLine();
 	}
 
