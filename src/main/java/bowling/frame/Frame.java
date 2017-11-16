@@ -45,8 +45,8 @@ public abstract class Frame {
 		return scores;
 	}
 
-	public Score score(Frame frame) {
-		return new Score(frame);
+	public Score score() {
+		return new Score(this);
 	}
 
 	@Override

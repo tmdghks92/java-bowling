@@ -18,7 +18,7 @@ public class ScoreTest {
 		next = next.bowl(9);
 		next = next.bowl(3);
 		next = next.bowl(2);
-		Score score = frame.score(frame);
+		Score score = frame.score();
 		List<Integer> scores = score.get();
 		assertEquals((Integer) 13, scores.get(0));
 	}
@@ -29,7 +29,7 @@ public class ScoreTest {
 		Frame next = frame.bowl(10);
 		next = next.bowl(3);
 		next = next.bowl(7);
-		Score score = frame.score(frame);
+		Score score = frame.score();
 		List<Integer> scores = score.get();
 		assertEquals((Integer) 20, scores.get(0));
 	}
@@ -40,7 +40,7 @@ public class ScoreTest {
 		Frame next = frame.bowl(10);
 		next = next.bowl(10);
 		next = next.bowl(1);
-		Score score = frame.score(frame);
+		Score score = frame.score();
 		List<Integer> scores = score.get();
 		assertEquals((Integer) 21, scores.get(0));
 	}
@@ -51,7 +51,7 @@ public class ScoreTest {
 		Frame next = frame.bowl(10);
 		next = next.bowl(10);
 		next = next.bowl(10);
-		Score score = frame.score(frame);
+		Score score = frame.score();
 		List<Integer> scores = score.get();
 		assertEquals((Integer) 30, scores.get(0));
 	}
