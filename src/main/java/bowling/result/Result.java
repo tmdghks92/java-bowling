@@ -5,6 +5,7 @@ import java.util.List;
 import bowling.frame.Frame;
 import bowling.frame.state.State;
 import bowling.score.Score;
+import bowling.score.Scores;
 
 public class Result {
 
@@ -12,11 +13,11 @@ public class Result {
 
 	private Frame frame;
 
-	private Score frameScore;
+	private Scores scores;
 
-	public Result(Frame frame, Score score) {
+	public Result(Frame frame, Scores score) {
 		this.frame = frame;
-		this.frameScore = score;
+		this.scores = score;
 	}
 
 	public String show(String name) {
@@ -30,11 +31,11 @@ public class Result {
 	private StringBuilder scoreLine() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("|      |");
-		if (frameScore == null) {
+		if (scores == null) {
 			return stringBuilder;
 		}
-		List<Integer> scores = frameScore.get();
-		for (Integer index : scores) {
+		List<Integer> scoreList = scores.get();
+		for (Integer index : scoreList) {
 			stringBuilder.append("  ");
 			stringBuilder.append(index);
 			stringBuilder.append("  |");

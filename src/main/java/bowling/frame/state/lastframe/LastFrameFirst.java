@@ -2,6 +2,7 @@ package bowling.frame.state.lastframe;
 
 import bowling.frame.state.Running;
 import bowling.frame.state.State;
+import bowling.score.Score;
 
 public class LastFrameFirst extends Running {
 
@@ -22,5 +23,11 @@ public class LastFrameFirst extends Running {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getFirstScore());
 		return stringBuilder.toString();
+	}
+
+	@Override
+	public Score getScore(Score score) {
+		score.addScore(getFirstScore());
+		return score;
 	}
 }

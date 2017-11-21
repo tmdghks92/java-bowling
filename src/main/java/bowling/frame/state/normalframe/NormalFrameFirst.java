@@ -2,6 +2,7 @@ package bowling.frame.state.normalframe;
 
 import bowling.frame.state.Running;
 import bowling.frame.state.State;
+import bowling.score.Score;
 
 public class NormalFrameFirst extends Running {
 
@@ -22,5 +23,11 @@ public class NormalFrameFirst extends Running {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(getFirstScore());
 		return stringBuilder.toString();
+	}
+
+	@Override
+	public Score getScore(Score score) {
+		score.addScore(getFirstScore());
+		return score;
 	}
 }

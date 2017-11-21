@@ -7,6 +7,7 @@ import bowling.frame.state.normalframe.NormalFrameSpare;
 import bowling.frame.state.normalframe.NormalFrameStrike;
 import bowling.result.Result;
 import bowling.score.Score;
+import bowling.score.Scores;
 
 public abstract class Frame {
 	private int no;
@@ -32,14 +33,14 @@ public abstract class Frame {
 
 	abstract public Frame getNext();
 
-	abstract public Integer getScore();
+	abstract public Score getScore();
 
-	public Result result(Score score) {
+	public Result result(Scores score) {
 		return new Result(this, score);
 	}
 
-	public Score score() {
-		return new Score(this);
+	public Scores score() {
+		return new Scores(this);
 	}
 
 	public boolean isStrike() {

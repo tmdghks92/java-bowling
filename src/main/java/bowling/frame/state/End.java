@@ -1,5 +1,7 @@
 package bowling.frame.state;
 
+import bowling.score.Score;
+
 public abstract class End implements State {
 
 	private int firstScore;
@@ -28,4 +30,20 @@ public abstract class End implements State {
 		return secondScore;
 	}
 
+	@Override
+	public int getScore(int count) {
+		if (count == 2) {
+			return getScore();
+		}
+		return firstScore;
+	}
+
+	@Override
+	public Score getScore(Score score) {
+		score.addScore(getFirstScore());
+		if (!score.isEnd()) {
+			score.addScore(getSecondScore());
+		}	
+		return score;
+	}
 }

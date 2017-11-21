@@ -1,5 +1,7 @@
 package bowling.frame.state;
 
+import bowling.score.Score;
+
 public abstract class Running implements State {
 
 	private int firstScore;
@@ -25,5 +27,13 @@ public abstract class Running implements State {
 	@Override
 	public int getScore() {
 		return firstScore + secondScore;
+	}
+
+	@Override
+	public int getScore(int count) {
+		if (count == 2) {
+			return getScore();
+		}
+		return firstScore;
 	}
 }

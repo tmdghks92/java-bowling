@@ -7,7 +7,7 @@ import bowling.frame.Frame;
 import bowling.frame.NormalFrame;
 import bowling.frame.state.BowlingEnd;
 import bowling.result.Result;
-import bowling.score.Score;
+import bowling.score.Scores;
 import bowling.user.User;
 import bowling.view.BowlingFormView;
 
@@ -19,7 +19,7 @@ public class BowlingGame {
 		int start = 1;
 		Frame frame = NormalFrame.create(start);
 		Frame next = frame.bowl(BowlingFormView.bowling(user.printName()));
-		Score score;
+		Scores score;
 		Result result = frame.result(null);
 		log.debug(result.show(user.printName()));
 		do {

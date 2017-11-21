@@ -7,14 +7,13 @@ import bowling.exception.BowlingException;
 import bowling.frame.state.End;
 import bowling.frame.state.State;
 import bowling.frame.state.normalframe.NormalFrameReady;
+import bowling.score.Score;
 
 public class NormalFrame extends Frame {
 	private static final Logger log = LoggerFactory.getLogger(NormalFrame.class);
 
 	private State state;
 	private Frame next;
-
-	private int frameScore;
 
 	public NormalFrame(int no) {
 		super(no);
@@ -50,16 +49,16 @@ public class NormalFrame extends Frame {
 	}
 
 	@Override
-	public Integer getScore() {
+	public Score getScore() {
 		try {
 			if (this.isSecond()) {
-				return calculateScore(this, 0, frameScore);
+				return calculateScore(this, Score.createMiss(this.state.getScore()));
 			}
 			if (this.isSpare()) {
-				return calculateScore(this, 1, frameScore);
+				return calculateScore(this, Score.createSpare(this.state.getScore()));
 			}
 			if (this.isStrike()) {
-				return calculateScore(this, 2, frameScore);
+				return calculateScore(this, Score.createStrike(this.state.getScore()));
 			}
 		} catch (BowlingException e) {
 			return null;
@@ -67,13 +66,29 @@ public class NormalFrame extends Frame {
 		return null;
 	}
 
-	private Integer calculateScore(Frame frame, int count, int frameScore) throws BowlingException {
-		log.debug("frame score : {}", frameScore);
-		State state = frame.getState();
-		if (count == 0) {
-			return frameScore + state.getScore();
+	private Score calculateScore(Frame frame, Score score) {
+		log.debug("frame score : {}", frame);
+		if (score.isEnd()) {
+			return score;
 		}
-		log.debug("{}", state.getScore());
-		return calculateScore(frame.getNext(), count - 1, state.getScore());
+		Frame next = frame.getNext();
+		State state = next.getState();
+		score = state.getScore(score);
+		log.debug("{}", score.getScore());
+		return calculateScore(next, score);
 	}
+
+	// private Score calculateScore(Frame frame, int count, int frameScore) throws
+	// BowlingException {
+	// log.debug("frame score : {}", frameScore);
+	// State state = frame.getState();
+	// int score = state.getScore(count);
+	// if (count == 0) {
+	// return frameScore + score;
+	// }
+	// log.debug("{}", state.getScore());
+	// return calculateScore(frame.getNext(), count - 1, state.getScore());
+	// }
+
+	// 현재 프레임 점수를 가지는 변수와 카운드를 가지는 변수
 }

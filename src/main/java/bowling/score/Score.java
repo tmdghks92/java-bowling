@@ -1,48 +1,36 @@
 package bowling.score;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import bowling.exception.BowlingException;
-import bowling.frame.Frame;
-
 public class Score {
-	private static final Logger log = LoggerFactory.getLogger(Score.class);
+	private int score;
+	private int count;
 
-	private List<Integer> scores;
-
-	public Score(Frame frame) {
-		scores = new ArrayList<>();
-		calculateScore(frame);
+	private Score(int score, int count) {
+		this.score = score;
+		this.count = count;
 	}
 
-	public List<Integer> get() {
-		return scores;
+	public void addScore(int score) {
+		this.score += score;
+		this.count--;
 	}
 
-	private void calculateScore(Frame frame) {
-		Frame next = frame;
-		while (!isEmpty(next)) {
-			try {
-				scores.add(getBeforeBowlingScore() + next.getScore());
-				next = next.getNext();
-			} catch (BowlingException | NullPointerException e) {
-				return;
-			}
-		}
+	public boolean isEnd() {
+		return this.count == 0;
 	}
 
-	private boolean isEmpty(Frame frame) {
-		return frame == null;
+	public int getScore() {
+		return score;
 	}
 
-	private int getBeforeBowlingScore() {
-		if (scores.size() == 0) {
-			return 0;
-		}
-		return scores.get(scores.size() - 1);
+	public static Score createMiss(int score) {
+		return new Score(score, 0);
+	}
+
+	public static Score createSpare(int score) {
+		return new Score(score, 1);
+	}
+
+	public static Score createStrike(int score) {
+		return new Score(score, 2);
 	}
 }
