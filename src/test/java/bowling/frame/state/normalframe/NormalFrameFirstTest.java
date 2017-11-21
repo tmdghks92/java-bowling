@@ -13,7 +13,7 @@ public class NormalFrameFirstTest {
 	public void 현재_프레임_점수_출력() {
 		State state = new NormalFrameReady();
 		state = state.bowl(1);
-		assertEquals("1", state.getPresentScore());
+		assertEquals("1", state.getPresentStringScore());
 	}
 
 }

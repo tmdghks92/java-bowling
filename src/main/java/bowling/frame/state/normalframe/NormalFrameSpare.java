@@ -4,35 +4,16 @@ import bowling.frame.state.End;
 
 public class NormalFrameSpare extends End {
 
-	private int firstScore;
-	private int secondScore;
-
 	public NormalFrameSpare(int firstScore, int secondScore) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
+		super(firstScore, secondScore);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(firstScore);
+		stringBuilder.append(getFirstScore());
 		stringBuilder.append("|/");
 		return stringBuilder.toString();
-	}
-
-	@Override
-	public int getFinalScore() {
-		return 10;
-	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return secondScore;
 	}
 
 }

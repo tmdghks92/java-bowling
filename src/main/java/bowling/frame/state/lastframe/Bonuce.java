@@ -5,43 +5,28 @@ import bowling.frame.state.State;
 
 public class Bonuce extends Running {
 
-	private int firstScore;
-	private int secondScore;
-
 	public Bonuce(int firstScore, int secondScore) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
+		super(firstScore, secondScore);
 	}
 
 	@Override
 	public State bowl(int score) {
-		return new LastBonuce(firstScore, secondScore, score);
+		return new LastBonuce(getFirstScore(), getSecondScore(), score);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("X|");
-		if (secondScore == 10) {
+		if (getSecondScore() == 10) {
 			stringBuilder.append("X");
 			return stringBuilder.toString();
 		}
-		if (secondScore == 0) {
+		if (getSecondScore() == 0) {
 			stringBuilder.append("-");
 			return stringBuilder.toString();
 		}
-		stringBuilder.append(secondScore);
+		stringBuilder.append(getSecondScore());
 		return stringBuilder.toString();
 	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return secondScore;
-	}
-
 }

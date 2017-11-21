@@ -19,8 +19,8 @@ public class BowlingGame {
 		int start = 1;
 		Frame frame = NormalFrame.create(start);
 		Frame next = frame.bowl(BowlingFormView.bowling(user.printName()));
-		Score score = frame.score();
-		Result result = frame.result(score);
+		Score score;
+		Result result = frame.result(null);
 		log.debug(result.show(user.printName()));
 		do {
 			next = next.bowl(BowlingFormView.bowling(user.printName()));

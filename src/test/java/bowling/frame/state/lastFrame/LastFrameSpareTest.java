@@ -14,7 +14,7 @@ public class LastFrameSpareTest {
 		State state = new LastFrameReady();
 		state = state.bowl(2);
 		state = state.bowl(8);
-		assertEquals("2|/", state.getPresentScore());
+		assertEquals("2|/", state.getPresentStringScore());
 	}
 
 }

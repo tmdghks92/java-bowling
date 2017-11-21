@@ -14,7 +14,7 @@ public class LastFrameSecondTest {
 		State state = new LastFrameReady();
 		state = state.bowl(1);
 		state = state.bowl(2);
-		assertEquals("1|2", state.getPresentScore());
+		assertEquals("1|2", state.getPresentStringScore());
 	}
 
 }

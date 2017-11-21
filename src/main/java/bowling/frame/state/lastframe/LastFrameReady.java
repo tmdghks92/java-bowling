@@ -1,5 +1,6 @@
 package bowling.frame.state.lastframe;
 
+import bowling.exception.BowlingException;
 import bowling.frame.state.State;
 
 public class LastFrameReady implements State {
@@ -7,29 +8,18 @@ public class LastFrameReady implements State {
 	@Override
 	public State bowl(int score) {
 		if (score == 10) {
-			return new LastFrameStrike();
+			return new LastFrameStrike(10, 0);
 		}
 		return new LastFrameFirst(score);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		return "      |";
 	}
 
 	@Override
-	public int getFinalScore() {
-		return 0;
+	public int getScore() {
+		throw new BowlingException("ready 상태에서는 점수를 가져 올수 없습니다.");
 	}
-
-	@Override
-	public int getFirstScore() {
-		return 0;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return 0;
-	}
-
 }

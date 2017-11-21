@@ -5,26 +5,17 @@ import bowling.frame.state.State;
 
 public class LastFrameStrike extends Running {
 
-	private final int STRIKE_SCORE = 10;
+	public LastFrameStrike(int firstScore, int secondScore) {
+		super(firstScore, secondScore);
+	}
 
 	@Override
 	public State bowl(int score) {
-		return new Bonuce(STRIKE_SCORE, score);
+		return new Bonuce(getFirstScore(), score);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		return "X";
 	}
-
-	@Override
-	public int getFirstScore() {
-		return 10;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return 0;
-	}
-
 }

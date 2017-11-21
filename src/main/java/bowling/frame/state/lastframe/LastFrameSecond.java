@@ -4,36 +4,18 @@ import bowling.frame.state.BowlingEnd;
 
 public class LastFrameSecond extends BowlingEnd {
 
-	private int firstScore;
-	private int secondScore;
-
 	public LastFrameSecond(int firstScore, int secondScore) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
+		super(firstScore, secondScore, 0);
+
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(firstScore);
+		stringBuilder.append(getFirstScore());
 		stringBuilder.append("|");
-		stringBuilder.append(secondScore);
+		stringBuilder.append(getSecondScore());
 		return stringBuilder.toString();
-	}
-
-	@Override
-	public int getFinalScore() {
-		return firstScore + secondScore;
-	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return secondScore;
 	}
 
 }

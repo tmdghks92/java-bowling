@@ -4,41 +4,21 @@ import bowling.frame.state.End;
 
 public class NormalFrameSecond extends End {
 
-	private int firstScore;
-	private int secondScore;
-
 	public NormalFrameSecond(int firstScore, int secondScore) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
+		super(firstScore, secondScore);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
-		if (secondScore == 0) {
-			stringBuilder.append(firstScore);
+		if (getSecondScore() == 0) {
+			stringBuilder.append(getFirstScore());
 			stringBuilder.append("|-");
 			return stringBuilder.toString();
 		}
-		stringBuilder.append(firstScore);
+		stringBuilder.append(getFirstScore());
 		stringBuilder.append("|");
-		stringBuilder.append(secondScore);
+		stringBuilder.append(getSecondScore());
 		return stringBuilder.toString();
 	}
-
-	@Override
-	public int getFinalScore() {
-		return firstScore + secondScore;
-	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return secondScore;
-	}
-
 }

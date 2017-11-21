@@ -14,7 +14,7 @@ public class BonuceTest {
 		State state = new LastFrameReady();
 		state = state.bowl(10);
 		state = state.bowl(0);
-		assertEquals("X|-", state.getPresentScore());
+		assertEquals("X|-", state.getPresentStringScore());
 	}
 
 }

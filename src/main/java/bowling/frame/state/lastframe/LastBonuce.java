@@ -4,40 +4,18 @@ import bowling.frame.state.BowlingEnd;
 
 public class LastBonuce extends BowlingEnd {
 
-	private int firstScore;
-	private int secondScore;
-	private int thirdScore;
-
 	public LastBonuce(int firstScore, int secondScore, int thirdScore) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
-		this.thirdScore = thirdScore;
+		super(firstScore, secondScore, thirdScore);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(firstScore);
+		stringBuilder.append(getFirstScore());
 		stringBuilder.append("|");
-		stringBuilder.append(secondScore);
+		stringBuilder.append(getSecondScore());
 		stringBuilder.append("|");
-		stringBuilder.append(thirdScore);
+		stringBuilder.append(getThirdScore());
 		return stringBuilder.toString();
 	}
-
-	@Override
-	public int getFinalScore() {
-		return firstScore + secondScore + thirdScore;
-	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return secondScore;
-	}
-
 }

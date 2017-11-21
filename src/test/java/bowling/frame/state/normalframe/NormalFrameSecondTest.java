@@ -15,7 +15,7 @@ public class NormalFrameSecondTest {
 		State state = new NormalFrameReady();
 		state = state.bowl(1);
 		state = state.bowl(2);
-		assertEquals("1|2", state.getPresentScore());
+		assertEquals("1|2", state.getPresentStringScore());
 	}
 
 	@Test

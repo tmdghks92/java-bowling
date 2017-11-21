@@ -5,35 +5,20 @@ import bowling.frame.state.State;
 
 public class LastFrameSpare extends Running {
 
-	private int firstScore;
-	private int secondScore;
-
 	public LastFrameSpare(int firstScore, int secondScore) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
+		super(firstScore, secondScore);
 	}
 
 	@Override
 	public State bowl(int score) {
-		return new LastBonuce(firstScore, secondScore, score);
+		return new LastBonuce(getFirstScore(), getSecondScore(), score);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(firstScore);
+		stringBuilder.append(getFirstScore());
 		stringBuilder.append("|/");
 		return stringBuilder.toString();
 	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return secondScore;
-	}
-
 }

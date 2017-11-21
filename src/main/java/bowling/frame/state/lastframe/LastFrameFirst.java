@@ -5,35 +5,22 @@ import bowling.frame.state.State;
 
 public class LastFrameFirst extends Running {
 
-	private int firstScore;
-
 	public LastFrameFirst(int score) {
-		this.firstScore = score;
+		super(score, 0);
 	}
 
 	@Override
 	public State bowl(int score) {
-		if (firstScore + score == 10) {
-			return new LastFrameSpare(firstScore, score);
+		if (getFirstScore() + score == 10) {
+			return new LastFrameSpare(getFirstScore(), score);
 		}
-		return new LastFrameSecond(firstScore, score);
+		return new LastFrameSecond(getFirstScore(), score);
 	}
 
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(firstScore);
+		stringBuilder.append(getFirstScore());
 		return stringBuilder.toString();
 	}
-
-	@Override
-	public int getFirstScore() {
-		return firstScore;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return 0;
-	}
-
 }

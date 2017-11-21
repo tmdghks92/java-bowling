@@ -55,7 +55,7 @@ public class Result {
 		while (frame != null) {
 			stringBuilder.append("  ");
 			State state = frame.getState();
-			stringBuilder.append(state.getPresentScore());
+			stringBuilder.append(state.getPresentStringScore());
 			stringBuilder.append("  |");
 			frame = frame.getNext();
 		}

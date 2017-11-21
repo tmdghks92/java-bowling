@@ -1,16 +1,15 @@
 package bowling.frame;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import bowling.frame.state.BowlingEnd;
 import bowling.frame.state.State;
+import bowling.frame.state.normalframe.NormalFrameSecond;
+import bowling.frame.state.normalframe.NormalFrameSpare;
+import bowling.frame.state.normalframe.NormalFrameStrike;
 import bowling.result.Result;
 import bowling.score.Score;
 
 public abstract class Frame {
-
 	private int no;
-	private List<Integer> scores = new ArrayList<>();
 
 	public Frame(int no) {
 		this.no = no;
@@ -20,11 +19,7 @@ public abstract class Frame {
 		return this.no;
 	}
 
-	public void addScore(int score) {
-		scores.add(score);
-	}
-
-	protected Frame nextFrame() {
+	public Frame nextFrame() {
 		if (no == 9) {
 			return LastFrame.create(no + 1);
 		}
@@ -37,16 +32,30 @@ public abstract class Frame {
 
 	abstract public Frame getNext();
 
+	abstract public Integer getScore();
+
 	public Result result(Score score) {
 		return new Result(this, score);
 	}
 
-	public List<Integer> getScore() {
-		return scores;
-	}
-
 	public Score score() {
 		return new Score(this);
+	}
+
+	public boolean isStrike() {
+		return this.getState() instanceof NormalFrameStrike;
+	}
+
+	public boolean isSpare() {
+		return this.getState() instanceof NormalFrameSpare;
+	}
+
+	public boolean isSecond() {
+		return this.getState() instanceof NormalFrameSecond;
+	}
+
+	public boolean isLastFrame() {
+		return this.getState() instanceof BowlingEnd;
 	}
 
 	@Override

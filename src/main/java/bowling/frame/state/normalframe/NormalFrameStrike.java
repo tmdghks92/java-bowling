@@ -4,24 +4,12 @@ import bowling.frame.state.End;
 
 public class NormalFrameStrike extends End {
 
+	public NormalFrameStrike(int i, int j) {
+		super(i, j);
+	}
+
 	@Override
-	public String getPresentScore() {
+	public String getPresentStringScore() {
 		return "X";
 	}
-
-	@Override
-	public int getFinalScore() {
-		return 10;
-	}
-
-	@Override
-	public int getFirstScore() {
-		return 10;
-	}
-
-	@Override
-	public int getSecondScore() {
-		return 0;
-	}
-
 }
