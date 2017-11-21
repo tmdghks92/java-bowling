@@ -2,7 +2,6 @@ package bowling.frame.state.lastframe;
 
 import bowling.frame.state.Running;
 import bowling.frame.state.State;
-import bowling.score.Score;
 
 public class LastFrameStrike extends Running {
 
