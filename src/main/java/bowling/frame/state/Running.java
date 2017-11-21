@@ -30,10 +30,11 @@ public abstract class Running implements State {
 	}
 
 	@Override
-	public int getScore(int count) {
-		if (count == 2) {
-			return getScore();
+	public Score getScore(Score score) {
+		score.addScore(getFirstScore());
+		if (!score.isEnd()) {
+			score.addScore(getSecondScore());
 		}
-		return firstScore;
+		return score;
 	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import bowling.frame.Frame;
 import bowling.frame.state.State;
-import bowling.score.Score;
 import bowling.score.Scores;
 
 public class Result {

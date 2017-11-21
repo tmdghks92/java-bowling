@@ -23,5 +23,4 @@ public class LastFrameSecond extends BowlingEnd {
 	public int getThirdScore() {
 		throw new BowlingException("Non-Bonuce 상태에서는 세 번째 점수를 가져 올수 없습니다.");
 	}
-
 }

@@ -67,28 +67,15 @@ public class NormalFrame extends Frame {
 	}
 
 	private Score calculateScore(Frame frame, Score score) {
-		log.debug("frame score : {}", frame);
+		log.debug("frame score : {}", score.getScore());
+		log.debug("frame score : {}", score.getCount());
 		if (score.isEnd()) {
 			return score;
 		}
 		Frame next = frame.getNext();
 		State state = next.getState();
 		score = state.getScore(score);
-		log.debug("{}", score.getScore());
 		return calculateScore(next, score);
 	}
-
-	// private Score calculateScore(Frame frame, int count, int frameScore) throws
-	// BowlingException {
-	// log.debug("frame score : {}", frameScore);
-	// State state = frame.getState();
-	// int score = state.getScore(count);
-	// if (count == 0) {
-	// return frameScore + score;
-	// }
-	// log.debug("{}", state.getScore());
-	// return calculateScore(frame.getNext(), count - 1, state.getScore());
-	// }
-
 	// 현재 프레임 점수를 가지는 변수와 카운드를 가지는 변수
 }

@@ -2,7 +2,6 @@ package bowling.frame.state.lastframe;
 
 import bowling.frame.state.Running;
 import bowling.frame.state.State;
-import bowling.score.Score;
 
 public class Bonuce extends Running {
 
@@ -29,11 +28,5 @@ public class Bonuce extends Running {
 		}
 		stringBuilder.append(getSecondScore());
 		return stringBuilder.toString();
-	}
-
-	@Override
-	public Score getScore(Score score) {
-		score.addScore(getFirstScore());
-		return score;
 	}
 }

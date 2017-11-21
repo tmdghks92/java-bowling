@@ -19,11 +19,4 @@ public class LastFrameStrike extends Running {
 	public String getPresentStringScore() {
 		return "X";
 	}
-
-	@Override
-	public Score getScore(Score score) {
-		score.addScore(getFirstScore());
-		score.addScore(getSecondScore());
-		return score;
-	}
 }

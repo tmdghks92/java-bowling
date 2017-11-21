@@ -33,4 +33,8 @@ public class Score {
 	public static Score createStrike(int score) {
 		return new Score(score, 2);
 	}
+
+	public int getCount() {
+		return count;
+	}
 }

@@ -25,11 +25,6 @@ public class NormalFrameReady implements State {
 	}
 
 	@Override
-	public int getScore(int count) {
-		throw new BowlingException("ready 상태에서는 점수를 가져 올수 없습니다.");
-	}
-
-	@Override
 	public Score getScore(Score score) {
 		throw new BowlingException("ready 상태에서는 점수를 가져 올수 없습니다.");
 	}

@@ -35,6 +35,7 @@ public class LastFrame extends Frame {
 
 	@Override
 	public Score getScore() {
-		return null;
+		return Score.createMiss(this.state.getScore());
 	}
+
 }

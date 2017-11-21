@@ -28,9 +28,9 @@ public class ScoreTest {
 		Frame next = frame.bowl(10);
 		next = next.bowl(3);
 		next = next.bowl(7);
-//		next = next.bowl(7);
-//		next = next.bowl(7);
-//		next = next.bowl(2);
+		next = next.bowl(7);
+		next = next.bowl(7);
+		next = next.bowl(2);
 
 		Scores score = frame.score();
 		List<Integer> scores = score.get();
@@ -43,9 +43,9 @@ public class ScoreTest {
 		Frame next = frame.bowl(10);
 		next = next.bowl(10);
 		next = next.bowl(1);
-//		next = next.bowl(9);
-//		next = next.bowl(3);
-//		next = next.bowl(6);
+		next = next.bowl(9);
+		next = next.bowl(3);
+		next = next.bowl(6);
 		Scores score = frame.score();
 		List<Integer> scores = score.get();
 		assertEquals((Integer) 21, scores.get(0));

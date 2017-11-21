@@ -9,7 +9,5 @@ public interface State {
 
 	public int getScore();
 
-	public int getScore(int count);
-	
 	public Score getScore(Score score);
 }

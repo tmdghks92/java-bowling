@@ -36,12 +36,7 @@ public abstract class BowlingEnd implements State {
 	}
 
 	@Override
-	public int getScore(int count) {
-		return 0;
-	}
-
-	@Override
 	public Score getScore(Score score) {
-		return score;
+		return Score.createMiss(getScore());
 	}
 }
